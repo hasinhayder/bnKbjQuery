@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Phonetic and Unijoy Bangla Input Scripts by Ekushey Team</title>
+        <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="driver.phonetic.js"></script>
+        <script type="text/javascript" src="driver.probhat.js"></script>
+        <script type="text/javascript" src="engine.js"></script>
+        <style>
+            .bangla{
+                font-size:18px;
+            }
+        </style>
+    </head>
+    <body>
+        Stat: <span id="stat"></span><br/>
+		Input System:  
+        <input checked type='radio' name='bn' onclick='enablePhonetic();'/> Phonetic |
+        <input type='radio' name='bn' onclick='enableProbhat();'/> Probhat
+        <h2>Type Bangla in the following input boxes</h2>
+        <textarea cols=60 rows=10 class="bangla"></textarea><br/><br/>
+		Or type here<br/>
+        <input type='text' style='width:650px;height:30px;' class="bangla"/><br/>
+        <br/><br/>
+        <h2>Switch Writing Mode</h2>
+		Ctrl+k (Command+k in Mac) for Safari and Chrome<br/>
+		Ctrl+y (Command+y in Mac) for Firefox and IE<br/>
+        <br/>
+        *To override, use the <b>switchkey</b> parameter<br/>
+        <h2>Sources</h2>
+                Download the <a href='bnKb.zip'>complete Package with Phonetic and Probhat driver</a><br/>
+		Checkout the source code of <a href='engine.js'>BanglaInputManager plugin</a> which acts as the central engine<br/>
+		Checkout the source code of <a href='driver.phonetic.js'>Phonetic Input Driver</a> which parses the input phonetically<br/>
+
+        <br/><br/>Brought to you by <a href='http://ekushey.org'>Ekushey Team</a>
+        <script>
+            $(document).ready(function(){
+                $(".bangla").bnKb({
+                    'switchkey': {"webkit":"k","mozilla":"y","safari":"k","chrome":"k","msie":"y"},
+                    'driver': phonetic
+                });
+            });
+				
+            function enablePhonetic()
+            {
+                $(".unijoy").bnKb(
+                {'switchkey': {"webkit":"k","mozilla":"y","safari":"k","chrome":"k","msie":"y"},
+                    'driver': phonetic});
+            }
+				
+            function enableProbhat()
+            {
+                $(".unijoy").bnKb(
+                {'switchkey': {"webkit":"k","mozilla":"y","safari":"k","chrome":"k","msie":"y"},
+                    'driver': probhat});
+            }
+        </script>
+    </body>
+</html>
+
+
